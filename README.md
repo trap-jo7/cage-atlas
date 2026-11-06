@@ -22,7 +22,7 @@ This is a snapshot, not a live feed. Not affiliated with or endorsed by the UFC 
     # in a second terminal:
     cd frontend && npm install --legacy-peer-deps && npm run dev
 
-Open http://localhost:5173. Run the tests with `python -m pytest -q`.
+Open http://localhost:5174/#scout. Run the tests with `python -m pytest -q`.
 
 ## Notes
 Style groups are exploratory (weak separation); see `models/ufc_career_model_meta.json` after training.
