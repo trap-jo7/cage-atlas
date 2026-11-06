@@ -9,14 +9,14 @@ from analysis.cageatlas.profiles import (
 
 
 def fight(fid, date, minutes, **kw):
-    row = dict(
-        bout_id=f"{fid}-{date}", event_date=pd.Timestamp(date), fighter_id=fid,
-        fighter_name=fid.upper(), weight_class="Lightweight",
-        duration_sec=minutes * 60.0, duration_reliable=True, stats_complete=True,
-        sig_landed=0.0, sig_attempted=0.0, opp_sig_landed=0.0, opp_sig_attempted=0.0,
-        td_landed=0.0, td_attempted=0.0, opp_td_landed=0.0, opp_td_attempted=0.0,
-        kd=0.0, ctrl_sec=0.0,
-    )
+    row = {
+        "bout_id": f"{fid}-{date}", "event_date": pd.Timestamp(date), "fighter_id": fid,
+        "fighter_name": fid.upper(), "weight_class": "Lightweight",
+        "duration_sec": minutes * 60.0, "duration_reliable": True, "stats_complete": True,
+        "sig_landed": 0.0, "sig_attempted": 0.0, "opp_sig_landed": 0.0, "opp_sig_attempted": 0.0,
+        "td_landed": 0.0, "td_attempted": 0.0, "opp_td_landed": 0.0, "opp_td_attempted": 0.0,
+        "kd": 0.0, "ctrl_sec": 0.0,
+    }
     row.update(kw)
     return row
 
@@ -103,3 +103,4 @@ def test_main_division_vs_most_recent_and_women_flag():
     assert p.loc["a", "primary_weight_class"] == "Featherweight"
     assert p.loc["t", "primary_weight_class"] == "Welterweight"
     assert bool(p.loc["w", "women_division_fighter"]) and not bool(p.loc["a", "women_division_fighter"])
+

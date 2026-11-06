@@ -1,6 +1,7 @@
 import json
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 RAW = Path("data/raw")
 
@@ -14,7 +15,7 @@ def mmss(s):
         m, sec = str(s).strip().split(":")
         m, sec = int(m), int(sec)
         return m * 60 + sec if m >= 0 and 0 <= sec < 60 else float("nan")
-    except Exception:
+    except (ValueError, TypeError):
         return float("nan")
 
 

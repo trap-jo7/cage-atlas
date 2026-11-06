@@ -4,7 +4,7 @@ Run from the project root:
     python -m analysis.cageatlas.bouts
 """
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
@@ -135,7 +135,7 @@ def to_fighter_bouts(bouts):
 def validate(bouts, meta_keys):
     """Counts of problems found. Nothing here silently fixes data."""
     return {
-        "rows": int(len(bouts)),
+        "rows": len(bouts),
         "date_min": str(bouts["event_date"].min().date()),
         "date_max": str(bouts["event_date"].max().date()),
         "duplicate_bout_ids": int(bouts["bout_id"].duplicated().sum()),
@@ -168,9 +168,7 @@ def validate(bouts, meta_keys):
         "winner_name_matches_neither_fighter": int(
             (bouts["winner_name"].notna() & (bouts["winner_side"] == "none")).sum()
         ),
-        "json_entries_without_csv_row": int(
-            len(set(meta_keys) - set(bouts["fight_url"]))
-        ),
+        "json_entries_without_csv_row": len(set(meta_keys) - set(bouts["fight_url"])),
         "fighter_1_is_winner_share": round(
             float((bouts["winner_side"] == "f1").mean()), 4
         ),
@@ -182,7 +180,7 @@ def main():
     raw, meta = load_raw()
     bouts = build_bouts(raw, meta)
     report = validate(bouts, meta.keys())
-    report["built_at_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    report["built_at_utc"] = datetime.now(UTC).isoformat(timespec="seconds")
     report["source"] = "Kaggle leandroiber/ufc-stats-complete-dataset (CC0-1.0); data from UFCStats.com"
 
     bouts.to_parquet(OUT_DIR / "ufc_bouts.parquet", index=False)

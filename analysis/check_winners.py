@@ -1,4 +1,5 @@
 import json
+
 import pandas as pd
 
 b = pd.read_parquet("data/processed/ufc_bouts.parquet")

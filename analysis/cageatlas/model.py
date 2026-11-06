@@ -7,7 +7,7 @@ Run from the project root:
 import argparse
 import json
 import platform
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from itertools import combinations
 from pathlib import Path
 
@@ -158,11 +158,11 @@ def evaluate():
         sizes = np.bincount(km.labels_)
         mean_ari, min_ari = stability(Z, k)
         rows.append(
-            dict(k=k, silhouette=round(float(silhouette_score(Z, km.labels_)), 4),
-                 inertia=round(float(km.inertia_), 1),
-                 smallest_cluster=int(sizes.min()), largest_cluster=int(sizes.max()),
-                 stability_mean_ari=round(mean_ari, 3),
-                 stability_min_ari=round(min_ari, 3))
+            {"k": k, "silhouette": round(float(silhouette_score(Z, km.labels_)), 4),
+                 "inertia": round(float(km.inertia_), 1),
+                 "smallest_cluster": int(sizes.min()), "largest_cluster": int(sizes.max()),
+                 "stability_mean_ari": round(mean_ari, 3),
+                 "stability_min_ari": round(min_ari, 3)}
         )
     table = pd.DataFrame(rows)
     table.to_csv(DIAG_DIR / "k_evaluation.csv", index=False)
@@ -180,7 +180,7 @@ def evaluate():
         Z_alt = Zstd * feature_weights(shares=shares)
         sensitivity[name] = round(neighbor_overlap(Z, Z_alt), 3)
     report = {
-        "cohort_size": int(len(cohort)),
+        "cohort_size": len(cohort),
         "outlier_review": outlier_review(Zstd),
         "weight_sensitivity_top10_neighbor_overlap_vs_chosen_weights": sensitivity,
     }
@@ -219,7 +219,7 @@ def train(k):
         snap = {}
 
     metadata = {
-        "trained_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "trained_at_utc": datetime.now(UTC).isoformat(timespec="seconds"),
         "window": "career",
         "k": k,
         "seed": SEED,
@@ -228,7 +228,7 @@ def train(k):
             "definition": "UFC fighters, career window, at least 3 eligible fights and "
                           "15 minutes (eligible = fights from 2001-01-01 on with "
                           "complete stats and a valid duration)",
-            "size": int(len(cohort)),
+            "size": len(cohort),
             "fighters_with_imputed_values": int(imputed.any(axis=1).sum()),
             "imputed_cells_by_feature": {f: int(imputed[:, i].sum())
                                          for i, f in enumerate(FEATURES)},
@@ -300,3 +300,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

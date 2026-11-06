@@ -1,5 +1,6 @@
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 RAW = Path("data/raw")
 
@@ -15,7 +16,7 @@ def mmss_to_seconds(s):
         if m < 0 or not 0 <= sec < 60:
             return float("nan")
         return m * 60 + sec
-    except Exception:
+    except (ValueError, TypeError):
         return float("nan")
 
 

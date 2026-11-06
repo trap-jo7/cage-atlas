@@ -4,10 +4,9 @@ Run from the project root (after analysis.cageatlas.bouts):
     python -m analysis.cageatlas.profiles
 """
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 PROC_DIR = Path("data/processed")
@@ -16,24 +15,24 @@ MIN_MINUTES = 15.0
 
 # Every feature: what it is, its unit, and the exact numerator / denominator.
 FEATURE_INFO = {
-    "sig_landed_per_min": dict(group="striking", unit="per minute",
-        num="significant strikes landed", den="fight minutes"),
-    "sig_absorbed_per_min": dict(group="striking", unit="per minute",
-        num="significant strikes absorbed (opponent landed)", den="fight minutes"),
-    "sig_accuracy": dict(group="striking", unit="share (0-1)",
-        num="significant strikes landed", den="significant strikes attempted"),
-    "sig_defense": dict(group="striking", unit="share (0-1)",
-        num="1 - opponent sig. strikes landed", den="opponent sig. strikes attempted"),
-    "kd_per15": dict(group="striking", unit="per 15 minutes",
-        num="knockdowns scored", den="fight minutes / 15"),
-    "td_attempted_per15": dict(group="grappling", unit="per 15 minutes",
-        num="takedowns attempted", den="fight minutes / 15"),
-    "td_accuracy": dict(group="grappling", unit="share (0-1)",
-        num="takedowns landed", den="takedowns attempted"),
-    "td_defense": dict(group="grappling", unit="share (0-1)",
-        num="1 - opponent takedowns landed", den="opponent takedowns attempted"),
-    "ctrl_share": dict(group="control", unit="share (0-1)",
-        num="control time (seconds)", den="fight time with recorded control (seconds)"),
+    "sig_landed_per_min": {"group": "striking", "unit": "per minute",
+        "num": "significant strikes landed", "den": "fight minutes"},
+    "sig_absorbed_per_min": {"group": "striking", "unit": "per minute",
+        "num": "significant strikes absorbed (opponent landed)", "den": "fight minutes"},
+    "sig_accuracy": {"group": "striking", "unit": "share (0-1)",
+        "num": "significant strikes landed", "den": "significant strikes attempted"},
+    "sig_defense": {"group": "striking", "unit": "share (0-1)",
+        "num": "1 - opponent sig. strikes landed", "den": "opponent sig. strikes attempted"},
+    "kd_per15": {"group": "striking", "unit": "per 15 minutes",
+        "num": "knockdowns scored", "den": "fight minutes / 15"},
+    "td_attempted_per15": {"group": "grappling", "unit": "per 15 minutes",
+        "num": "takedowns attempted", "den": "fight minutes / 15"},
+    "td_accuracy": {"group": "grappling", "unit": "share (0-1)",
+        "num": "takedowns landed", "den": "takedowns attempted"},
+    "td_defense": {"group": "grappling", "unit": "share (0-1)",
+        "num": "1 - opponent takedowns landed", "den": "opponent takedowns attempted"},
+    "ctrl_share": {"group": "control", "unit": "share (0-1)",
+        "num": "control time (seconds)", "den": "fight time with recorded control (seconds)"},
 }
 FEATURES = list(FEATURE_INFO)
 
@@ -132,8 +131,8 @@ def correlated_pairs(cohort, cutoff=0.7):
 def coverage_report(profiles):
     cohort = profiles[profiles["meets_threshold"]]
     return {
-        "profiles_total": int(len(profiles)),
-        "profiles_meeting_threshold": int(len(cohort)),
+        "profiles_total": len(profiles),
+        "profiles_meeting_threshold": len(cohort),
         "threshold": {"min_fights": MIN_FIGHTS, "min_minutes": MIN_MINUTES},
         "undefined_feature_counts_in_cohort": {
             f: int(cohort[f].isna().sum()) for f in FEATURES
@@ -149,7 +148,7 @@ def coverage_report(profiles):
 
 def main():
     fb = pd.read_parquet(PROC_DIR / "ufc_fighter_bouts.parquet")
-    report = {"built_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    report = {"built_at_utc": datetime.now(UTC).isoformat(timespec="seconds")}
     for window in ("career", "last5"):
         profiles = build_profiles(fb, window)
         profiles.to_parquet(PROC_DIR / f"ufc_profiles_{window}.parquet", index=False)
@@ -161,3 +160,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
