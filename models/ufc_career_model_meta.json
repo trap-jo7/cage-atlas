@@ -1,0 +1,128 @@
+{
+  "trained_at_utc": "2026-10-27T03:50:29+00:00",
+  "window": "career",
+  "k": 4,
+  "seed": 42,
+  "n_init": 10,
+  "cohort": {
+    "definition": "UFC fighters, career window, at least 3 eligible fights and 15 minutes (eligible = fights from 2001-01-01 on with complete stats and a valid duration)",
+    "size": 1778,
+    "fighters_with_imputed_values": 31,
+    "imputed_cells_by_feature": {
+      "sig_landed_per_min": 0,
+      "sig_absorbed_per_min": 0,
+      "sig_accuracy": 0,
+      "sig_defense": 0,
+      "kd_per15": 0,
+      "td_attempted_per15": 0,
+      "td_accuracy": 19,
+      "td_defense": 12,
+      "ctrl_share": 0
+    }
+  },
+  "source_snapshot": {
+    "source": "Kaggle leandroiber/ufc-stats-complete-dataset (CC0-1.0); data from UFCStats.com",
+    "rows": 8709,
+    "date_min": "1993-11-12",
+    "date_max": "2026-05-16",
+    "built_at_utc": "2026-10-26T17:12:12+00:00"
+  },
+  "features": {
+    "sig_landed_per_min": {
+      "group": "striking",
+      "unit": "per minute",
+      "num": "significant strikes landed",
+      "den": "fight minutes"
+    },
+    "sig_absorbed_per_min": {
+      "group": "striking",
+      "unit": "per minute",
+      "num": "significant strikes absorbed (opponent landed)",
+      "den": "fight minutes"
+    },
+    "sig_accuracy": {
+      "group": "striking",
+      "unit": "share (0-1)",
+      "num": "significant strikes landed",
+      "den": "significant strikes attempted"
+    },
+    "sig_defense": {
+      "group": "striking",
+      "unit": "share (0-1)",
+      "num": "1 - opponent sig. strikes landed",
+      "den": "opponent sig. strikes attempted"
+    },
+    "kd_per15": {
+      "group": "striking",
+      "unit": "per 15 minutes",
+      "num": "knockdowns scored",
+      "den": "fight minutes / 15"
+    },
+    "td_attempted_per15": {
+      "group": "grappling",
+      "unit": "per 15 minutes",
+      "num": "takedowns attempted",
+      "den": "fight minutes / 15"
+    },
+    "td_accuracy": {
+      "group": "grappling",
+      "unit": "share (0-1)",
+      "num": "takedowns landed",
+      "den": "takedowns attempted"
+    },
+    "td_defense": {
+      "group": "grappling",
+      "unit": "share (0-1)",
+      "num": "1 - opponent takedowns landed",
+      "den": "opponent takedowns attempted"
+    },
+    "ctrl_share": {
+      "group": "control",
+      "unit": "share (0-1)",
+      "num": "control time (seconds)",
+      "den": "fight time with recorded control (seconds)"
+    }
+  },
+  "group_shares": {
+    "striking": 0.45,
+    "grappling": 0.35,
+    "control": 0.2
+  },
+  "weights": {
+    "sig_landed_per_min": 0.3,
+    "sig_absorbed_per_min": 0.3,
+    "sig_accuracy": 0.3,
+    "sig_defense": 0.3,
+    "kd_per15": 0.3,
+    "td_attempted_per15": 0.3416,
+    "td_accuracy": 0.3416,
+    "td_defense": 0.3416,
+    "ctrl_share": 0.4472
+  },
+  "missing_value_handling": "undefined rates (no attempts) are filled with the cohort median and flagged; never treated as zero",
+  "scaling": "StandardScaler on median-imputed features; no clipping",
+  "diagnostics": {
+    "silhouette": 0.1156,
+    "inertia": 1204.5,
+    "cluster_sizes": {
+      "Group A: weak takedown defense, little control time": 390,
+      "Group B: high control time, many takedown attempts": 374,
+      "Group C: strong strike defense": 573,
+      "Group D: high strike volume, absorbs many strikes": 441
+    },
+    "stability_mean_ari": 0.988,
+    "stability_min_ari": 0.981,
+    "pca_explained_variance_ratio": [
+      0.3081,
+      0.1685
+    ],
+    "reference_distance_median_pairwise": 1.2654
+  },
+  "versions": {
+    "python": "3.13.0",
+    "scikit_learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0"
+  },
+  "note": "Groups are exploratory style descriptions, not rankings."
+}

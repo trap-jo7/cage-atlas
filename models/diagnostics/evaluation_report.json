@@ -1,0 +1,32 @@
+{
+  "cohort_size": 1778,
+  "outlier_review": {
+    "skew": {
+      "sig_landed_per_min": 0.57,
+      "sig_absorbed_per_min": 0.77,
+      "sig_accuracy": 0.09,
+      "sig_defense": -0.24,
+      "kd_per15": 2.84,
+      "td_attempted_per15": 1.04,
+      "td_accuracy": 0.53,
+      "td_defense": -0.56,
+      "ctrl_share": 0.79
+    },
+    "max_abs_z": {
+      "sig_landed_per_min": 5.68,
+      "sig_absorbed_per_min": 4.58,
+      "sig_accuracy": 5.04,
+      "sig_defense": 3.82,
+      "kd_per15": 9.72,
+      "td_attempted_per15": 6.37,
+      "td_accuracy": 3.22,
+      "td_defense": 3.07,
+      "ctrl_share": 4.79
+    },
+    "fighters_with_any_abs_z_over_4": 29
+  },
+  "weight_sensitivity_top10_neighbor_overlap_vs_chosen_weights": {
+    "equal_groups": 0.835,
+    "unweighted": 0.847
+  }
+}

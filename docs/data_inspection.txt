@@ -1,0 +1,170 @@
+
+======================================================================
+UFC: shape and dates
+======================================================================
+(8709, 35)
+date range: 1993-11-12 00:00:00 to 2026-05-16 00:00:00 | unparseable dates: 0
+duplicate fight_url: 0
+
+======================================================================
+UFC: missing values per column
+======================================================================
+f2_Reach_cm             989
+f1_Reach_cm             332
+f2_DOB                  116
+f2_Stance                92
+f1_DOB                   44
+f1_Stance                24
+f2_Height_cm             22
+f1_Sig_str_landed        21
+f2_Td_landed             21
+f2_Sig_str_attempted     21
+f2_Sig_str_landed        21
+f1_Td_attempted          21
+f1_Td_landed             21
+f1_Sig_str_attempted     21
+f2_Td_attempted          21
+f2_Ctrl                  21
+f1_Ctrl                  21
+f2_KD                    21
+f1_KD                    21
+f2_Weight_kg             19
+f1_Height_cm              4
+f1_Weight_kg              3
+dtype: int64
+
+======================================================================
+UFC: weight classes
+======================================================================
+weight_class
+Lightweight              1460
+Welterweight             1393
+Middleweight             1153
+Featherweight             861
+Bantamweight              781
+Heavyweight               772
+Light Heavyweight         750
+Flyweight                 415
+Women's Strawweight       368
+Women's Flyweight         273
+Women's Bantamweight      246
+Open Weight               125
+Catch Weight               81
+Women's Featherweight      30
+Super Heavyweight           1
+Name: count, dtype: int64
+
+======================================================================
+UFC: methods (top 15)
+======================================================================
+method
+Decision - Unanimous       3134
+KO/TKO                     2742
+Submission                 1690
+Decision - Split            825
+Decision - Majority         104
+TKO - Doctor's Stoppage      98
+Overturned                   59
+Could Not Continue           32
+DQ                           23
+Other                         2
+Name: count, dtype: int64
+
+======================================================================
+UFC: round_num
+======================================================================
+round_num
+1    2450
+2    1440
+3    4433
+4      50
+5     336
+Name: count, dtype: int64
+
+======================================================================
+UFC: fight duration
+======================================================================
+unparseable times: 0
+count    8709.000000
+mean      634.609140
+std       363.541611
+min         5.000000
+25%       278.000000
+50%       810.000000
+75%       900.000000
+max      1500.000000
+dtype: float64
+fights with duration <= 0 or missing: 0
+time values over 5:00: 48
+
+======================================================================
+UFC: stats sanity
+======================================================================
+f1 sig landed > attempted: 0 | both zero: 40
+f1 td landed > attempted: 0
+f1 unparseable control times: 202
+f2 sig landed > attempted: 0 | both zero: 61
+f2 td landed > attempted: 0
+f2 unparseable control times: 202
+fights where both fighters have zero sig-str attempts: 8
+
+======================================================================
+UFC: fighters and evidence thresholds
+======================================================================
+unique fighters: 2696
+fighters with >= 3 fights: 1864
+eligible (>= 3 fights and >= 15 minutes): 1812
+
+======================================================================
+PFL: shape, status, dates
+======================================================================
+(976, 33)
+event_status
+REALIZADO    970
+AGENDADO       6
+Name: count, dtype: int64
+date range: 2021-04-29 00:00:00+00:00 to 2026-07-25 00:00:00+00:00
+fighter_1 results: {'win': 950, 'nc': 17, 'yet to come': 6, 'draw': 3}
+method
+Decision (Unanimous)                       350
+TKO (Punches)                              134
+Decision (Split)                            88
+Submission (Rear-Naked Choke)               73
+KO (Punches)                                46
+KO (Punch)                                  26
+Submission (Arm-Triangle Choke)             16
+No Contest (Overturned)                     12
+Submission (Guillotine Choke)               11
+TKO (Retirement)                             9
+TKO (Knee and Punches)                       9
+Technical Submission (Rear-Naked Choke)      9
+Name: count, dtype: int64
+stat-like columns: []
+duplicate rows (event + fight_name): 0
+
+======================================================================
+Bellator: shape, status, dates
+======================================================================
+(3499, 35)
+event_status
+REALIZADO    3498
+CANCELADO       1
+Name: count, dtype: int64
+date range: 2009-04-03 00:00:00+00:00 to 2024-09-14 00:00:00+00:00
+fighter_1 results: {'win': 3444, 'nc': 31, 'draw': 23, nan: 1}
+method
+Decision (Unanimous)                       1069
+TKO (Punches)                               494
+Submission (Rear-Naked Choke)               335
+Decision (Split)                            306
+KO (Punches)                                145
+Submission (Guillotine Choke)               109
+Submission (Armbar)                         104
+KO (Punch)                                  101
+Submission (Triangle Choke)                  59
+Submission (Arm-Triangle Choke)              53
+TKO (Doctor Stoppage)                        52
+Technical Submission (Rear-Naked Choke)      34
+Name: count, dtype: int64
+stat-like columns: []
+duplicate rows (event + fight_name): 0

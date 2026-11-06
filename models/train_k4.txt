@@ -1,0 +1,41 @@
+{
+  "silhouette": 0.1156,
+  "inertia": 1204.5,
+  "cluster_sizes": {
+    "Group A: weak takedown defense, little control time": 390,
+    "Group B: high control time, many takedown attempts": 374,
+    "Group C: strong strike defense": 573,
+    "Group D: high strike volume, absorbs many strikes": 441
+  },
+  "stability_mean_ari": 0.988,
+  "stability_min_ari": 0.981,
+  "pca_explained_variance_ratio": [
+    0.3081,
+    0.1685
+  ],
+  "reference_distance_median_pairwise": 1.2654
+}
+
+NOTE: silhouette is below 0.25, so the groups are not well separated; treat them as soft descriptions of a continuous spectrum.
+
+Average raw values per group:
+                      Group A: weak takedown defense, little control time  Group B: high control time, many takedown attempts  Group C: strong strike defense  Group D: high strike volume, absorbs many strikes
+sig_landed_per_min                                                  2.893                                               2.902                           3.037                                              4.864
+sig_absorbed_per_min                                                3.919                                               2.678                           2.943                                              4.760
+sig_accuracy                                                        0.412                                               0.504                           0.429                                              0.476
+sig_defense                                                         0.513                                               0.520                           0.580                                              0.532
+kd_per15                                                            0.217                                               0.277                           0.272                                              0.525
+td_attempted_per15                                                  3.344                                               6.371                           3.759                                              3.098
+td_accuracy                                                         0.240                                               0.452                           0.455                                              0.352
+td_defense                                                          0.458                                               0.584                           0.630                                              0.722
+ctrl_share                                                          0.122                                               0.382                           0.215                                              0.135
+
+Group sizes by most recent weight class:
+weight_class  Bantamweight  Catch Weight  Featherweight  Flyweight  Heavyweight  Light Heavyweight  Lightweight  Middleweight  Welterweight  Women's Bantamweight  Women's Featherweight  Women's Flyweight  Women's Strawweight
+cluster                                                                                                                                                                                                                         
+0                       52             2             38         31           36                 37           54            43            51                    10                      2                 15                   19
+1                       44             1             37         23           28                 28           62            55            62                    11                      1                  9                   13
+2                       50             8             62         32           32                 35           92            73           109                    21                      0                 27                   32
+3                       45            10             53         18           42                 37           72            53            61                    14                      1                 15                   20
+
+Saved: models/ufc_career_model.joblib and ufc_career_model_meta.json

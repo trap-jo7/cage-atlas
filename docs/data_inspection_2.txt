@@ -1,0 +1,143 @@
+
+======================================================================
+JSON: bellator_win_title_data.json
+======================================================================
+type: dict | length: 3498
+first keys: ['BFC_-_Bellator_Fighting_Championships_1_Jorge_Masvidal_Nick_Agallar', 'BFC_-_Bellator_Fighting_Championships_1_Eddie_Alvarez_Greg_Loughran', 'BFC_-_Bellator_Fighting_Championships_1_Yahir_Reyes_Nick_Gonzalez', 'BFC_-_Bellator_Fighting_Championships_1_Estevan_Payan_Luis_Palomino', 'BFC_-_Bellator_Fighting_Championships_1_Joe_Soto_Ben_Greer', 'BFC_-_Bellator_Fighting_Championships_1_Toby_Imada_Alonzo_Martinez', 'BFC_-_Bellator_Fighting_Championships_1_Jonathan_Brookins_Stephen_Ledbetter', 'BFC_-_Bellator_Fighting_Championships_1_Lorenzo_Borgomeo_Daniel_Morales', 'BFC_-_Bellator_Fighting_Championships_1_James_Brasco_Kevin_Abrante', 'BFC_-_Bellator_Fighting_Championships_1_Moyses_Gabin_Chris_Decaro']
+first value: {
+  "event_date": "2009-04-03",
+  "fighter_1": "Jorge Masvidal",
+  "fighter_2": "Nick Agallar",
+  "winner": "Jorge Masvidal",
+  "is_title_fight": false
+}
+
+======================================================================
+JSON: pfl_win_title_data.json
+======================================================================
+type: dict | length: 1220
+first keys: ['PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Francis_Ngannou_Renan_Ferreira', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Cristiane_Justino_Larissa_Pacheco', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Johnny_Eblen_Fabian_Edwards', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Zafar_Mohsen_Husein_Kadimagomaev', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Paul_Hughes_A.J._McKee', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Raufeon_Stots_Marcos_Breno', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Makkasharip_Zaynukov_Dedrek_Sanders', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Ibragim_Ibragimov_Nacho_Campos', 'PFL_Super_Fights_-_Battle_of_the_Giants:_Brace_for_Impact_Taha_Bendaoud_Tariq_Ismail', 'PFL_Super_Fights_-_PFL_vs._Bellator_Champs_Renan_Ferreira_Ryan_Bader']
+first value: {
+  "event_date": "2024-10-19",
+  "fighter_1": "Francis Ngannou",
+  "fighter_2": "Renan Ferreira",
+  "winner": "Francis Ngannou",
+  "is_title_fight": true
+}
+
+======================================================================
+JSON: win_and_title_data-ufc.json
+======================================================================
+type: dict | length: 8722
+first keys: ['http://ufcstats.com/fight-details/810c9da07970c4a6', 'http://ufcstats.com/fight-details/b8ca1acdf3dc2f58', 'http://ufcstats.com/fight-details/20f316f96c9e4458', 'http://ufcstats.com/fight-details/1a191251620a84ca', 'http://ufcstats.com/fight-details/398db40015b3c81c', 'http://ufcstats.com/fight-details/acc9a109b00a99e1', 'http://ufcstats.com/fight-details/cf9035f2fc2e232f', 'http://ufcstats.com/fight-details/7bced112f3229b1b', 'http://ufcstats.com/fight-details/fd47032108b85cf0', 'http://ufcstats.com/fight-details/3e2f00991f511607']
+first value: {
+  "winner": "Ciryl Gane",
+  "is_title_fight": false,
+  "event_date": "2022-09-03",
+  "fighter_1": "Ciryl Gane",
+  "fighter_2": "Tai Tuivasa"
+}
+
+======================================================================
+UFC: what do unreadable control-time values look like, and when?
+======================================================================
+f1_Ctrl
+--     181
+NaN     21
+Name: count, dtype: int64
+event_date
+1994    31
+1995    40
+1996    43
+1997    41
+1998    25
+1999    22
+
+======================================================================
+UFC: fights with a time over 5:00
+======================================================================
+      event_date         fighter_1       fighter_2  round_num   time
+8243  1999-05-07     Pete Williams   Travis Fulton          1  06:28
+8248  1999-03-05        Tito Ortiz      Guy Mezger          1  09:56
+8250  1999-03-05       Jeremy Horn   Chuck Liddell          1  12:00
+8254  1999-03-05        Sione Latu    Joey Roberts          1  10:01
+8260  1999-01-08       Evan Tanner   Darrel Gholar          1  07:57
+8261  1999-01-08     Laverne Clark   Frank Caracci          1  06:52
+8262  1998-10-16    Frank Shamrock      John Lober          1  07:40
+8264  1998-10-16       Pedro Rizzo    David Abbott          1  08:07
+8268  1998-10-16    Tulio Palhares  Adriano Santos          1  09:00
+8269  1998-10-16   Cesar Marscucci    Paulo Santos          1  10:27
+8274  1998-05-15  Mike van Arsdale       Joe Pardo          1  11:01
+8278  1998-05-15     Chuck Liddell   Noe Hernandez          1  12:00
+8281  1998-03-13      Pat Miletich   Chris Brennan          1  09:02
+8282  1998-03-13   Jerry Bohlander   Kevin Jackson          1  10:23
+8284  1998-03-13     Mikey Burnett   Eugenio Tadeu          1  09:45
+round_num among these: {1: 48}
+
+======================================================================
+UFC: fights where both fighters have zero sig-str attempts
+======================================================================
+      event_date           fighter_1        fighter_2      method  round_num   time
+4112  2017-09-22  Ovince Saint Preux     Yushin Okami  Submission          1  01:50
+5816  2014-03-08         Ilir Latifi  Cyrille Diabate  Submission          1  03:02
+8216  2000-03-10         Scott Adams      Ian Freeman  Submission          1  03:09
+8385  1995-09-08       Remco Pardoel      Ryan Parker  Submission          1  03:05
+8393  1995-07-14       Oleg Taktarov   Anthony Macias  Submission          1  00:09
+8428  1994-03-11        Royce Gracie    Remco Pardoel  Submission          1  01:31
+8430  1994-03-11        Royce Gracie    Jason DeLucia  Submission          1  01:07
+8703  1993-11-14        Royce Gracie     Ken Shamrock  Submission          1  00:57
+
+======================================================================
+UFC: fights with recorded strike stats, per year
+======================================================================
+event_date
+1993      8
+1994     29
+1995     34
+1996     36
+1997     39
+1998     21
+1999     44
+2000     43
+2001     40
+2002     53
+2003     41
+2004     39
+2005     80
+2006    158
+2007    171
+2008    201
+2009    215
+2010    253
+2011    300
+2012    341
+2013    386
+2014    503
+2015    473
+2016    493
+2017    457
+2018    474
+2019    516
+2020    456
+2021    509
+2022    511
+2023    520
+2024    517
+2025    522
+2026    205
+
+======================================================================
+PFL: rows dated after 2026-05-16
+======================================================================
+count: 17
+                  event_date event_status              fighter_1 fighter_1_result                method
+0  2026-05-24 00:00:00+00:00     AGENDADO         Mohammad Yahya      yet to come                   NaN
+1  2026-06-13 00:00:00+00:00     AGENDADO          Wasi Adeshina      yet to come                   NaN
+2  2026-06-19 00:00:00+00:00     AGENDADO          Hattan Alsaif      yet to come                   NaN
+3  2026-06-27 00:00:00+00:00     AGENDADO             A.J. McKee      yet to come                   NaN
+4  2026-07-18 00:00:00+00:00     AGENDADO   Costello van Steenis      yet to come                   NaN
+5  2026-07-25 00:00:00+00:00     AGENDADO              Thad Jean      yet to come                   NaN
+6  2026-05-23 00:00:00+00:00    REALIZADO       Patrick Habirora              win          KO (Punches)
+7  2026-05-23 00:00:00+00:00    REALIZADO         Taylor Lapilus              win  Decision (Unanimous)
+8  2026-05-23 00:00:00+00:00    REALIZADO  Boris Mbarga Atangana              win          KO (Punches)
+9  2026-05-23 00:00:00+00:00    REALIZADO            Naoki Inoue              win      Decision (Split)
