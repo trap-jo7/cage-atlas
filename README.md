@@ -1,6 +1,6 @@
 # CAGE ATLAS
 
-A fighter style-similarity scouting tool for UFC fighters. It measures how fighters fight
+Is a fighter style-similarity scouting tool for UFC fighters. It measures how fighters fight
 (strike volume, accuracy, defense, takedowns, control time), groups similar styles, finds the
 closest matches, compares fighters, and replays past fights from their totals.
 Similarity describes statistical resemblance only. It is not a prediction or betting tool.
